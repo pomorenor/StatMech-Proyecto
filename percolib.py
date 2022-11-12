@@ -1,6 +1,6 @@
 import random
 import numpy as np
-
+import matplotlib.pyplot as plt
 ### En este archivo pongan las implementaciones que vayan haciendo
 ### para los clusters y los params que debemos calcular.
 
@@ -82,3 +82,13 @@ def Percolador(Ma):
                     if M[ii,jj]==V:
                         Z[ii,jj]+=M[ii,jj]
     return Z
+
+if __name__ == '__main__':
+    M=np.random.randint(2, size=(20,60))
+    fig, ax =plt.subplots(1,3)
+    ax[0].imshow(M)
+    ax[1].imshow(HK(M))
+    ax[2].imshow(Percolador(M))
+    print("Número de Clusters:",CL(M))
+    print("Número de Clusters Percolantes:",CL(Percolador(M)))
+    plt.show()
