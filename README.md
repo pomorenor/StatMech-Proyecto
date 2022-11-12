@@ -1,5 +1,15 @@
 # StatMech-Proyecto
-Repositorio para subir las implementaciones relacionadas con el proyecto de Mecánica Estadística, en el semestre 2022-II. Dicho proyecto se basa en difusión y percolación.
+Repositorio para subir las implementaciones relacionadas con el proyecto de Mecánica Estadística, en el semestre 2022-II. Dicho proyecto se basa enpercolación (invasion & site).
+
+INVASION:
+- Pohl.
+- Vlacho.
+- Nicolle.
+
+SITE:
+- Fausto.
+- Jean Pierre.
+- Yopal.
 
 على الرغم من أنه منضبط للغاية وصارم وصارم في عمله في قسم الفيزياء بالجامعة الوطنية ويحب الخوض في نظريات حول قوانين الطبيعة وكتابة نتائج بحثه وتوجيه أطروحته ، إلا أنه ليس عالِمًا. النظارات والرداء والورانيو ، الذي يعرف فقط كيف يبتلع الكتب.
 
