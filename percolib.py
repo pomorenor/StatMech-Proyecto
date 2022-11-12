@@ -1,6 +1,7 @@
 import random
 import numpy as np
 import matplotlib.pyplot as plt
+from random import random, randrange
 ### En este archivo pongan las implementaciones que vayan haciendo
 ### para los clusters y los params que debemos calcular.
 
@@ -12,6 +13,16 @@ def fill_lattice(A,L,M):
             random_nums.remove(A[i,j])
     return A
 
+#RanMtz genera una matriz con tamaño dado, con 0 y 1 y recibe el tamaño 
+#la probabilidad de que una celda tenga un 1
+def RanMtz(p, size):
+    M=np.zeros((size[0],size[1]))
+    for ii in range(len(M)):
+        for jj in range(len(M[0])):
+            q=random()
+            if q<=p:
+                M[ii,jj]=1
+    return M
 
 #HK recibe una matriz (en principio de 0 y 1) y devuelve una matriz de 
 #enteros donde cada cluster está clasificado
@@ -83,8 +94,10 @@ def Percolador(Ma):
                         Z[ii,jj]+=M[ii,jj]
     return Z
 
+
+
 if __name__ == '__main__':
-    M=np.random.randint(2, size=(20,60))
+    M=RanMtz(0.5,size=(100,100))
     fig, ax =plt.subplots(1,3)
     ax[0].imshow(M)
     ax[1].imshow(HK(M))

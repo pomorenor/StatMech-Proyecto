@@ -1,5 +1,5 @@
 from percolib import *
-M=np.random.randint(2, size=(20,60))
+M=RanMtz(0.58,size=(100,100))
 fig, ax =plt.subplots(1,3)
 
 ax[0].imshow(M)
