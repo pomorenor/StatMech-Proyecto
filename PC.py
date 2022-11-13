@@ -79,5 +79,6 @@ if __name__ == '__main__':
     plt.text(0.45,0.6,"$Pc={:}$".format(round(Pc,3)))
     plt.text(0.45,0.4,"$Po={:}(P-Pc)**{:}$".format(round(popt[1],2),round(popt[0],2)))
     plt.grid()
+    plt.legend()
     plt.xlabel("Probabilidad de ocupación")
     plt.ylabel("Parametro de orden")
