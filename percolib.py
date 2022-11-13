@@ -108,6 +108,12 @@ if __name__ == '__main__':
     plt.show()
 
 
+
+
+
+
+###-----------------------------------------------------------
+
 ### Función que retorna los indices y los valores de los vecinos de una celda del cluster
 
 def closest_neighbours(A,i,j, L, M):
