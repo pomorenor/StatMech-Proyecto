@@ -22,7 +22,7 @@ def PrPe(SZ,P):
 
 #calcula la probabilidad crítica
 def PC(P):
-    SZ=25 #entre más grande, más preciso
+    SZ=35 #entre más grande, más preciso
     PP=PrPe(SZ,P)
     I0=[i for i,x in enumerate(PP) if x==0][-1]
     If=PP.index(1)
@@ -34,7 +34,7 @@ def PC(P):
 def PaOr(P,SZ):
     PO=[]
     for p in P:
-        rep=50
+        rep=120
         R=[]
         for i in range(rep): 
             N=0
@@ -51,29 +51,33 @@ def PaOr(P,SZ):
     return PO
 #función para el ExCr
 def Curva(x,a,b):
-  return b*(x-0.58)**a
+  return b*(x-0.59)**a
 
 #calcula el exponente crítico
-def ExCr(P):
-    Pc=PC(P)
-    Po=PaOr(P,100)
+def ExCr(P,Pc):
+    Po=PaOr(P,60)
     ep=0.01
     for p in range(len(P)):
         if np.fabs(P[p]-round(Pc,2))<ep:
             break 
     PrRz=np.copy(P[p+2:p+12])
-    PORz=Po[p:p+12]
+    PORz=np.copy(Po[p+2:p+12])
     popt, pcov = curve_fit(Curva,PrRz,PORz)
     
-    return popt[0]
+    return Po,popt
 
 
 
-if not __name__ == '__main__':  
+if __name__ == '__main__':  
     P=np.arange(0.4,0.8,0.01)
-    print(PC(P))    
-    for SZ in [10,20,30,40,50,60]:
-        PP=PrPe(SZ,P)
-        plt.scatter(P,PP,label="N={:}".format(SZ))
-    plt.legend()
-    plt.show()
+    Pc=PC(P)
+    AB=ExCr(P,Pc)
+    Po=AB[0]
+    popt=AB[1]
+    plt.scatter(P,Po,color="m",label="simulado")
+    plt.plot(P,Curva(P,popt[0],popt[1]),color="red",label="regresión")
+    plt.text(0.45,0.6,"$Pc={:}$".format(round(Pc,3)))
+    plt.text(0.45,0.4,"$Po={:}(P-Pc)**{:}$".format(round(popt[1],2),round(popt[0],2)))
+    plt.grid()
+    plt.xlabel("Probabilidad de ocupación")
+    plt.ylabel("Parametro de orden")

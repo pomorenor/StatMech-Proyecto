@@ -73,7 +73,7 @@ def HK(Ma):
 #CL recibe una matriz (de 0 y 1 o ya clasificada) y cuenta sus clusters
 
 def CL(Ma):
-    M=HK(Ma)
+    M=np.copy(Ma)
     MM=set(M.flatten())
     N=len(MM)-1
     return N
