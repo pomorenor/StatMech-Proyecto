@@ -1,7 +1,8 @@
-import random
 import numpy as np
 import matplotlib.pyplot as plt
-from random import random, randrange
+from random import *
+#from random import random, randrange
+
 ### En este archivo pongan las implementaciones que vayan haciendo
 ### para los clusters y los params que debemos calcular.
 
@@ -9,7 +10,7 @@ def fill_lattice(A,L,M):
     random_nums = [i for i in range(0,L*M)]
     for i in range(0,L):
         for j in range(0,M):
-            A[i,j] = random.choice(random_nums)
+            A[i,j] = choice(random_nums)
             random_nums.remove(A[i,j])
     return A
 
@@ -123,3 +124,21 @@ def closest_neighbours(A,i,j, L, M):
         neighbours.append(A[j[0]][j[1]])
 
     return indices, neighbours
+
+def start_invasive_percolation(A,L,M):
+
+    #La siguiente lista tendra como elementos
+    #los neighbours de cada
+    #celda en la que el líquido se encuentre
+
+    list_of_closest_neighbours = []
+
+    #Calculamos el lugar por donde se empieza
+    #la filtración
+
+    start_cell =A.min(axis = 1)[0]
+    i, j = np.where(A == start_cell)
+
+    list_of_closest_neighbours.append([closest_neighbours(A,i,j,L,M)])
+
+    return i,j
